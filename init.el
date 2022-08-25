@@ -17,16 +17,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(grep-find-ignored-directories
-   (quote
-    ("SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" ".venv")))
+   '("SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" ".venv"))
  '(inhibit-startup-screen t)
  '(markdown-command "pandoc")
- '(org-agenda-files
-   (quote
-    ("c:/repo/rmunro/notes/dates/2019-july.org")))
+ '(org-agenda-files '("c:/repo/rmunro/notes/dates/2019-july.org"))
  '(package-selected-packages
-   (quote
-    (virtualenvwrapper latex-preview-pane material-theme markdown-mode magit))))
+   '(smart-tabs-mode lsp-pyright lsp-mode virtualenvwrapper latex-preview-pane material-theme markdown-mode magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -6,24 +6,50 @@
 ;; Comment out this line if debug of customs.emacs is not required
 (setq debug-on-error t)
 
+(setq inhibit-startup-message t)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+
+(menu-bar-mode -1)
+
+;; set C formatting style to BSD
+(setq c-default-style "k&r"
+      c-basic-offset 4)
+
+;; display tab width
+(setq-default tab-width 4)
+
+;; maximum text width in columns
+(setq-default fill-column 120)
+
+;; highlight trailing spaces
+(setq-default show-trailing-whitespace t)
+
+;; display column numbers
+(setq column-number-mode t)
+
 ;;(add-to-list 'load-path "~/.emacs.d/site-lisp/")
+
+;; This should only use multi byte unicode when a character that can't be represented is used.
+(set-language-environment "UTF-8")
 
 ;; Package manager
 (require 'package)
 (add-to-list 'package-archives'
 	     ("melpa" . "http://melpa.org/packages/") t)
 
-;; Known issue wioth https support for emacs on windows so commenetd out for now
+;; Known issue with https support for emacs on windows so commented out for now
 ;; (require 'package)
 ;; (add-to-list 'package-archives'
 ;; 	     ("org" . "https://orgmode.org/elpa/") t)
 
-(package-initialize)
+;; (package-initialize)
 
 ;; Uncomment to cause refresh of package content
 ;;(package-refresh-contents)
 
-;; Attempt to conditionally force package refresh doesn't work 
+;; Attempt to conditionally force package refresh doesn't work
 ;;(when (not package-archive-contents)
 ;;  (package-refresh-contents))
 
@@ -86,7 +112,15 @@
 (load-theme 'desert t t)
 (enable-theme 'desert)
 
-
+;; smart tabs - use tabs for indentation and spaces for alignment
+(require 'smart-tabs-mode)
+;; select modes to apply to
+(smart-tabs-insinuate 'c 'javascript)
+;; default to no tabs
+(setq-default indent-tabs-mode nil)
+;; enable tabs for modes where use smart tabs
+(add-hook 'c-mode-common-hook
+              (lambda () (setq indent-tabs-mode t)))
 
 ;; Define key sequences for easier access to M-x
 ;; These allow C-x\C-m and C-c\C-m
@@ -95,9 +129,9 @@
 
 ;; Map C-w to backward-kill-word for fast delete / retype
 ;; re-map kill-region so can still access
-(global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-x\C-k" 'kill-region)
-(global-set-key "\C-c\C-k" 'kill-region)
+;; (global-set-key "\C-w" 'backward-kill-word)
+;; (global-set-key "\C-x\C-k" 'kill-region)
+;; (global-set-key "\C-c\C-k" 'kill-region)
 
 ;; to allow uppercsee UTF-8 encoding specifier at start of python files
 (define-coding-system-alias 'UTF-8 'utf-8)
